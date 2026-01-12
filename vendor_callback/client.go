@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	DefaultBaseURL = "https://huoyingcloud.shangancheng.com"
+	DefaultBaseURL = "https://huoying.shangancheng.com"
 )
 
 type Client struct {
