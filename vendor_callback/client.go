@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	DefaultBaseURL = "https://huoyingcloud.shangancheng.com/api/v1"
+	DefaultBaseURL = "https://huoyingcloud.shangancheng.com"
 )
 
 type Client struct {
@@ -120,7 +120,7 @@ func (c *Client) doRequest(ctx context.Context, method, path string, reqBody int
 // ProcessCode 统一码处理接口
 func (c *Client) ProcessCode(ctx context.Context, req *ProcessCodeRequest) (*ProcessCodeResponseData, error) {
 	var data ProcessCodeResponseData
-	err := c.doRequest(ctx, http.MethodPost, "/callback/process-code", req, &data)
+	err := c.doRequest(ctx, http.MethodPost, "/api/v1/callback/process-code", req, &data)
 	if err != nil {
 		return nil, err
 	}
@@ -129,5 +129,5 @@ func (c *Client) ProcessCode(ctx context.Context, req *ProcessCodeRequest) (*Pro
 
 // PaymentCallback 支付上报接口
 func (c *Client) PaymentCallback(ctx context.Context, req *PaymentCallbackRequest) error {
-	return c.doRequest(ctx, http.MethodPost, "/callback/payment", req, nil)
+	return c.doRequest(ctx, http.MethodPost, "/api/v1/callback/payment", req, nil)
 }
