@@ -1,3 +1,3 @@
 module github.com/Yoochao/huoying-sdk
 
-go 1.23.9
+go 1.23.0
