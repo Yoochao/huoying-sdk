@@ -30,6 +30,12 @@ type PaymentCallbackRequest struct {
 	ProductID string  `json:"product_id"` // 产品ID
 }
 
+// PaymentCallbackResponseData 支付上报响应数据
+type PaymentCallbackResponseData struct {
+	Success bool   `json:"success"` // 是否成功
+	Reason  string `json:"reason"`  // 失败原因
+}
+
 // ApiResponse 通用API响应
 type ApiResponse[T any] struct {
 	Code int    `json:"code"` // 0 表示成功，非 0 表示错误码

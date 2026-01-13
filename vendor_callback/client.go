@@ -128,6 +128,11 @@ func (c *Client) ProcessCode(ctx context.Context, req *ProcessCodeRequest) (*Pro
 }
 
 // PaymentCallback 支付上报接口
-func (c *Client) PaymentCallback(ctx context.Context, req *PaymentCallbackRequest) error {
-	return c.doRequest(ctx, http.MethodPost, "/api/v1/callback/payment", req, nil)
+func (c *Client) PaymentCallback(ctx context.Context, req *PaymentCallbackRequest) (*PaymentCallbackResponseData, error) {
+	var data PaymentCallbackResponseData
+	err := c.doRequest(ctx, http.MethodPost, "/api/v1/callback/payment", req, &data)
+	if err != nil {
+		return nil, err
+	}
+	return &data, nil
 }

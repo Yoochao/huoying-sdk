@@ -6,15 +6,15 @@ import (
 )
 
 func TestClient_ProcessCode(t *testing.T) {
-	appID := "app_"
-	appSecret := "sec_"
+	appID := "app_16MaeCg7oGWLpPL7"
+	appSecret := "XDOYnKMRJ9O58tSkYZllz9nYSpxqlBck"
 
 	baseUrl := "http://192.168.2.81:8046"
 
 	client := NewClient(appID, appSecret, WithBaseURL(baseUrl))
 
 	req := &ProcessCodeRequest{
-		Code:   "fe54527f49",
+		Code:   "43d4aa018b",
 		UserID: "789",
 	}
 
@@ -29,8 +29,8 @@ func TestClient_ProcessCode(t *testing.T) {
 }
 
 func TestClient_PaymentCallback(t *testing.T) {
-	appID := "app_"
-	appSecret := "sec_"
+	appID := "app_16MaeCg7oGWLpPL7"
+	appSecret := "XDOYnKMRJ9O58tSkYZllz9nYSpxqlBck"
 
 	baseUrl := "http://192.168.2.81:8046"
 
@@ -40,11 +40,14 @@ func TestClient_PaymentCallback(t *testing.T) {
 		UserID:    "789",
 		OrderNo:   "ORD_001",
 		Amount:    100.0,
-		ProductID: "5664560",
+		ProductID: "5664567",
 	}
 
-	err := client.PaymentCallback(context.Background(), req)
+	resp, err := client.PaymentCallback(context.Background(), req)
 	if err != nil {
 		t.Fatalf("PaymentCallback failed: %v", err)
+	}
+	if !resp.Success {
+		t.Logf("PaymentCallback failed logic: %s", resp.Reason)
 	}
 }
