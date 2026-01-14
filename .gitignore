@@ -95,4 +95,4 @@ docker-compose.override.yml
 # Sublime Text
 *.sublime-workspace
 .idea/
-*_test
+vendor_callback/*_test.go
