@@ -95,3 +95,4 @@ docker-compose.override.yml
 # Sublime Text
 *.sublime-workspace
 .idea/
+*_test
