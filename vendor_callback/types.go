@@ -14,6 +14,19 @@ type ProcessCodeRequest struct {
 	UserID string `json:"user_id"` // 厂商端用户ID
 }
 
+// CheckCodeRequest 校验码信息请求
+type CheckCodeRequest struct {
+	Code   string `json:"code"`    // 邀请码或兑换码
+	UserID string `json:"user_id"` // 厂商端用户ID
+}
+
+// CheckCodeResponseData 校验码信息响应数据
+type CheckCodeResponseData struct {
+	Type   string      `json:"type"`   // 码类型: invitation (邀请码), redemption (兑换码)
+	Status string      `json:"status"` // 状态: unused (未使用), used (已使用), invalid (无效)
+	Reward *RewardInfo `json:"reward"` // 奖励信息
+}
+
 // ProcessCodeResponseData 统一码处理响应数据
 type ProcessCodeResponseData struct {
 	Success bool        `json:"success"` // 是否成功

@@ -6,16 +6,16 @@ import (
 )
 
 func TestClient_ProcessCode(t *testing.T) {
-	appID := "app_16MaeCg7oGWLpPL7"
-	appSecret := "XDOYnKMRJ9O58tSkYZllz9nYSpxqlBck"
+	appID := "app_ayAkIFfeDazdfsDY"
+	appSecret := "lClISPPOv0wbiIZEQMlHWDk5wnpdIIES"
 
 	baseUrl := "http://192.168.2.81:8046"
 
 	client := NewClient(appID, appSecret, WithBaseURL(baseUrl))
 
 	req := &ProcessCodeRequest{
-		Code:   "43d4aa018b",
-		UserID: "789",
+		Code:   "1146e66d87",
+		UserID: "793",
 	}
 
 	resp, err := client.ProcessCode(context.Background(), req)
@@ -28,19 +28,38 @@ func TestClient_ProcessCode(t *testing.T) {
 	}
 }
 
+func TestClient_CheckCode(t *testing.T) {
+	appID := "app_ayAkIFfeDazdfsDY"
+	appSecret := "lClISPPOv0wbiIZEQMlHWDk5wnpdIIES"
+
+	baseUrl := "http://192.168.2.81:8046"
+
+	client := NewClient(appID, appSecret, WithBaseURL(baseUrl))
+
+	req := &CheckCodeRequest{
+		Code:   "EUD2X6W6SR",
+		UserID: "790",
+	}
+
+	resp, err := client.CheckCode(context.Background(), req)
+	if resp == nil || err != nil {
+		t.Fatalf("CheckCode failed: %v", err)
+	}
+}
+
 func TestClient_PaymentCallback(t *testing.T) {
-	appID := "app_16MaeCg7oGWLpPL7"
-	appSecret := "XDOYnKMRJ9O58tSkYZllz9nYSpxqlBck"
+	appID := "app_ayAkIFfeDazdfsDY"
+	appSecret := "lClISPPOv0wbiIZEQMlHWDk5wnpdIIES"
 
 	baseUrl := "http://192.168.2.81:8046"
 
 	client := NewClient(appID, appSecret, WithBaseURL(baseUrl))
 
 	req := &PaymentCallbackRequest{
-		UserID:    "789",
+		UserID:    "793",
 		OrderNo:   "ORD_001",
-		Amount:    100.0,
-		ProductID: "5664567",
+		Amount:    0.01,
+		ProductID: "5664568",
 	}
 
 	resp, err := client.PaymentCallback(context.Background(), req)

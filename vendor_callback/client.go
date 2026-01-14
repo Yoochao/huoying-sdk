@@ -117,6 +117,16 @@ func (c *Client) doRequest(ctx context.Context, method, path string, reqBody int
 	return nil
 }
 
+// CheckCode 校验码信息接口
+func (c *Client) CheckCode(ctx context.Context, req *CheckCodeRequest) (*CheckCodeResponseData, error) {
+	var data CheckCodeResponseData
+	err := c.doRequest(ctx, http.MethodPost, "/api/v1/callback/check-code", req, &data)
+	if err != nil {
+		return nil, err
+	}
+	return &data, nil
+}
+
 // ProcessCode 统一码处理接口
 func (c *Client) ProcessCode(ctx context.Context, req *ProcessCodeRequest) (*ProcessCodeResponseData, error) {
 	var data ProcessCodeResponseData
