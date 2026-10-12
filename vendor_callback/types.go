@@ -33,6 +33,7 @@ type ProcessCodeResponseData struct {
 	Type    string      `json:"type"`    // 码类型: invitation (邀请码), redemption (兑换码)
 	Reward  *RewardInfo `json:"reward"`  // 奖励信息
 	Reason  string      `json:"reason"`  // 失败原因
+	UserId  string      `json:"user_id"` // 厂商端用户ID
 }
 
 // PaymentCallbackRequest 支付上报请求
